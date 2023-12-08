@@ -9,12 +9,12 @@
 // Execute `rustlings hint errors1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+static ERROR_MESSAGE: &str = "`name` was empty; it must be nonempty.";
 
-pub fn generate_nametag_text(name: String) -> Result<String, String> {
+pub fn generate_nametag_text(name: String) -> Result<String, &'static str> {
     if name.is_empty() {
         // Empty names aren't allowed.
-        return Err("`name` was empty; it must be nonempty.".into());
+        return Err(ERROR_MESSAGE.into());
     } else {
         Ok(format!("Hi! My name is {}", name))
     }
@@ -37,7 +37,7 @@ mod tests {
         assert_eq!(
             generate_nametag_text("".into()),
             // Don't change this line
-            Err("`name` was empty; it must be nonempty.".into())
+            Err(ERROR_MESSAGE.into())
         );
     }
 }

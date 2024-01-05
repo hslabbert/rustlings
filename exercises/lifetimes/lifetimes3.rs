@@ -13,7 +13,7 @@ struct Book<'a> {
 fn main() {
     let name: String = String::from("Jill Smith");
     let title: String = String::from("Fish Flying");
-    let book = Book {
+    let book: Book<'_> = Book {
         author: &name,
         title: &title,
     };
